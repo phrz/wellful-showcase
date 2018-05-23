@@ -1,0 +1,38 @@
+<svg class="hearts-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 229">
+	<defs>
+		<g fill-rule="evenodd" id="heart">
+			<path d="M186 177c45-47 67-83 67-107 0-39-31-70-67-70-39 0-70 31-70 70 0 24 23 60 70 107z"/>
+			<path d="M70 177c45-47 67-83 67-107 0-39-31-70-67-70C31 0 0 31 0 70c0 24 23 60 70 107z"/>
+			<path d="M128 229c29-24 48-41 58-52 49-52 67-88 67-107 0-39-89 2-125 2C89 72 0 31 0 70c0 18 26 60 70 107 12 12 31 30 58 52z"/>
+		</g>
+	</defs>
+	<filter id="cutoffOpacity">
+		<feColorMatrix
+			type="matrix"
+			in="SourceGraphic"
+			result="BlackHearts"
+			values="0 0 0 0 0
+			0 0 0 0 0
+			0 0 0 0 0
+			0 0 0 11 0"
+		/>
+		<feColorMatrix
+			type="matrix"
+			in="SourceGraphic"
+			result="WhiteIntersection"
+			values="1 0 0 0 0
+			0 1 0 0 0
+			0 0 1 0 0
+			0 0 0 20 -2.3"
+		/>
+		<feMerge>
+			<feMergeNode in="BlackHearts"/>
+			<feMergeNode in="WhiteIntersection"/>
+		</feMerge>
+	</filter>
+	<!-- 500-253 = 247 -->
+	<g filter="url(#cutoffOpacity)">
+		<use href="#heart" x="0" y="0" fill="#fff" opacity="0.1" class="left-heart heart" />
+		<use href="#heart" x="247" y="0" fill="#fff" opacity="0.1" class="right-heart heart" />
+	</g>
+</svg>

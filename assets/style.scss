@@ -1,0 +1,217 @@
+---
+---
+
+* {
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	margin: 0;
+}
+
+::selection {
+	color: #000;
+	background-color: #fff;
+}
+
+.rel {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+}
+
+/* 
+   must be at least one viewport tall,
+   can go on though.
+*/
+.rel-longform {
+	height: auto;
+	min-height: 100vh;
+}
+
+.ph-retro-logo {
+	width: 75px;
+	height: 76px;
+	position: fixed;
+	bottom: 20px;
+	left: 12px;
+	z-index: 0;
+}
+
+.block {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	position: absolute;
+	clip: rect(0, auto, auto, 0);
+	font-family: Roboto;
+}
+
+.light-pink {
+	background-color: #FF75AD;
+	color: #000;
+}
+
+.deep-pink {
+	background-color: #FF0068;
+	color: #fff;
+}
+
+.blue {
+	background-color: #3C59CF;
+	color: #fff;
+}
+
+.light-pink .ph-retro-logo path {
+	fill: #FF0068;
+}
+
+.deep-pink .ph-retro-logo path {
+	fill: #000;
+}
+
+.blue .ph-retro-logo path {
+	fill: #fff;
+}
+
+.memo {
+	font-size: 19px;
+	line-height: 1.5;
+}
+
+/* TITLE PAGE SECTION */
+
+.title-page-grid {
+/* 	display: grid; */
+/* 	grid-template-rows: repeat(auto-fit, 40px); */
+}
+
+.page-title {
+	font-weight: 400;
+	font-size: 60pt;
+	margin: 0;
+	
+/* 	grid-row: 3 / span 5;
+	grid-column: 2 / span 5; */
+}
+
+.title-page-memo {
+	color: rgba(255,255,255,0.76);
+/* 	columns: 3 200px; */
+	
+/* 	grid-row: 6 / 24;
+	grid-column: 3 / 21; */
+}
+
+.title-page-memo p {
+	margin: 0 0 1rem;
+}
+
+.wellful-card-glyph {
+	float: right;
+}
+
+/* WELLFUL LOGOTYPE SECTION */
+
+.logotype-grid {
+	width: 832px;
+	height: 235px;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -117.5px 0 0 -416px;
+	
+	display: grid;
+	grid-template-rows: 2fr;
+	grid-template-columns: 42% 58%;
+}
+
+.wellful-logotype {
+	width: 553px;
+	grid-column: 1 / span 2;
+	align-self: end;
+	justify-self: right;
+}
+
+.logotype-memo {
+	grid-row: 1 / span 2;
+	grid-column: 1;
+	align-self: start;
+	margin: 0;
+}
+
+/* HEARTS SECTION */
+
+.hearts-grid {
+	width: 1000px;
+	height: 458px;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -229px 0 0 -500px;
+	
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: repeat(20, 1fr);
+}
+
+.hearts-memo {
+	grid-row: 1;
+	grid-column: 3 / span 5;
+	align-self: center;
+}
+
+.hearts-animation {
+	grid-row: 1;
+	grid-column: 1 / span 3;
+}
+
+ .left-heart, .right-heart {
+	animation-duration: 5s;
+	animation-timing-function: ease;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
+.heart {
+	animation-play-state: paused;
+}
+
+.block[once-onscreen="true"] .heart {
+	animation-play-state: running;
+}
+ 
+.left-heart {
+	animation-name: slideRight;
+}
+
+.right-heart {
+	animation-name: slideLeft;
+}
+
+/* 500 - 253 - 180 = 67 */
+@keyframes slideRight {
+	0% {
+		transform: translate3d(0,0,0);
+	}	
+	100% {
+		transform: translate3d(65.5px,0,0);
+	}
+}
+
+@keyframes slideLeft {
+	0% {
+		transform: translate3d(0,0,0);
+	}	
+	100% {
+		transform: translate3d(-65.5px,0,0);
+	}
+}
