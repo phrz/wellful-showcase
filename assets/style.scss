@@ -20,19 +20,19 @@ body {
 	background-color: #fff;
 }
 
-.rel {
-	width: 100vw;
-	height: 100vh;
-	position: relative;
-}
+.logo-crop-container {
+	width: 100%;
+	height: 100%;
+	box-shadow: 0px 0px 10px black;
+	position: absolute;
+	top: 0;
+	left: 0;
 
-/* 
-   must be at least one viewport tall,
-   can go on though.
-*/
-.rel-longform {
-	height: auto;
-	min-height: 100vh;
+	overflow: hidden;
+	// not a new-style shape definition. rect(top,right,bottom,left).
+	clip: rect(0, auto, auto, 0);
+
+	pointer-events: none;
 }
 
 .ph-retro-logo {
@@ -45,12 +45,21 @@ body {
 }
 
 .block {
-	height: 100%;
-	width: 100%;
-	overflow: hidden;
-	position: absolute;
-	clip: rect(0, auto, auto, 0);
+	height: 100vh;
+	width: 100vw;
+	position: relative;
 	font-family: Roboto;
+}
+
+.block-center-contents {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.block-longform {
+	height: auto;
+	min-height: 100vh;
 }
 
 .light-pink {
@@ -87,34 +96,41 @@ body {
 
 /* TITLE PAGE SECTION */
 
-.title-page-grid {
-/* 	display: grid; */
-/* 	grid-template-rows: repeat(auto-fit, 40px); */
+.title-page-group {
+	width: 1058px;
+	padding: 0 0 80px 40px;
+	margin: 0 auto;
 }
 
 .page-title {
 	font-weight: 400;
 	font-size: 60pt;
-	margin: 0;
-	
-/* 	grid-row: 3 / span 5;
-	grid-column: 2 / span 5; */
+	margin: 0 0 40px 0;
+	padding: 80px 0 0 0;
+	color: #fff;
+	line-height: 1;
 }
 
 .title-page-memo {
 	color: rgba(255,255,255,0.76);
-/* 	columns: 3 200px; */
-	
-/* 	grid-row: 6 / 24;
-	grid-column: 3 / 21; */
 }
 
 .title-page-memo p {
-	margin: 0 0 1rem;
+	width: 350px;
+}
+
+.title-page-memo .p1 {
+	margin: 0 0 0 80px;
+}
+
+.title-page-memo .p2 {
+	margin: -200px 0 0 450px;
 }
 
 .wellful-card-glyph {
+	width: 730px;
 	float: right;
+	shape-outside: polygon(24% 3%, 0 37%, 72% 99%, 100% 99%, 90% 40%);
 }
 
 /* WELLFUL LOGOTYPE SECTION */
@@ -122,11 +138,6 @@ body {
 .logotype-grid {
 	width: 832px;
 	height: 235px;
-	
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin: -117.5px 0 0 -416px;
 	
 	display: grid;
 	grid-template-rows: 2fr;
@@ -152,11 +163,6 @@ body {
 .hearts-grid {
 	width: 1000px;
 	height: 458px;
-	
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin: -229px 0 0 -500px;
 	
 	display: grid;
 	grid-template-rows: 1fr;
@@ -197,7 +203,6 @@ body {
 	animation-name: slideLeft;
 }
 
-/* 500 - 253 - 180 = 67 */
 @keyframes slideRight {
 	0% {
 		transform: translate3d(0,0,0);
