@@ -3,6 +3,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+@import 'mixins';
+
 * {
 	box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
@@ -47,16 +49,31 @@ body {
 }
 
 .block {
-	height: 100vh;
+	min-height: 100vh;
 	width: 100vw;
 	position: relative;
 	font-family: Roboto;
+
+	overflow: hidden;
+
+	@include breakpoint-up(lg) {
+		min-height: 600px;
+		height: 100vh;
+	}
+}
+
+.block:last-of-type {
+	padding-bottom: 60px;
 }
 
 .block-center-contents {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	flex-direction: row;
+
+	@include breakpoint-up(lg) {
+		justify-content: center;
+	}
 }
 
 .block-longform {
@@ -99,87 +116,139 @@ body {
 /* TITLE PAGE SECTION */
 
 .title-page-group {
-	width: 1058px;
-	padding: 0 0 80px 40px;
+	max-width: 700px;
 	margin: 0 auto;
 }
 
 .page-title {
+	width: 60%;
 	font-weight: 400;
-	font-size: 60pt;
-	margin: 0 0 40px 0;
-	padding: 80px 0 0 0;
+	font-size: 10vw;
+
+	margin: -2.3em 0 40px;
+	padding: 0 2rem 0;
+	
 	color: #fff;
 	line-height: 1;
 }
 
+@media screen and (min-width: 700px) {
+	.page-title {
+		font-size: 70px;
+	}
+}
+
 .title-page-memo {
 	color: rgba(255,255,255,0.76);
+	padding-bottom: 2rem;
 }
 
 .title-page-memo p {
-	width: 350px;
+	padding: 0 2rem;
 }
 
-.title-page-memo .p1 {
-	margin: 0 0 0 80px;
-}
+// create the column layout of the paragraphs
+// and have them wrap around the image
+@include breakpoint-up(lg) {
+	.title-page-group {
+		width: 1024px;
+		max-width: initial;
+		padding: 0 0 80px 40px;
+	}
 
-.title-page-memo .p2 {
-	margin: -200px 0 0 450px;
-}
+	.page-title {
+		width: auto;
+		font-size: 60pt;
+		margin: 0 0 40px 0;
+		padding: 60px 0 0 0;
+	}
 
-.wellful-card-glyph {
-	width: 730px;
-	float: right;
-	shape-outside: polygon(24% 3%, 0 37%, 72% 99%, 100% 99%, 90% 40%);
+	.title-page-memo {
+		padding: 0;
+	}
+
+	.title-page-memo p {
+		width: 350px;
+		padding: 0;
+	}
+
+	.title-page-memo .p1 {
+		margin: 0 0 0 80px;
+	}
+
+	.title-page-memo .p2 {
+		margin: -200px 0 0 450px;
+	}
+
+	.wellful-card-glyph {
+		width: 730px;
+		float: right;
+		shape-outside: polygon(24% 3%, 0 37%, 72% 99%, 100% 99%, 90% 40%);
+	}
 }
 
 /* WELLFUL LOGOTYPE SECTION */
 
 .logotype-grid {
-	width: 832px;
-	height: 235px;
-	
-	display: grid;
-	grid-template-rows: 2fr;
-	grid-template-columns: 42% 58%;
+	max-width: 600px;
+	padding: 2rem;
+	margin: 0 auto;
 }
 
 .wellful-logotype {
-	width: 553px;
-	grid-column: 1 / span 2;
-	align-self: end;
-	justify-self: right;
+	max-width: 553px;
 }
 
 .logotype-memo {
-	grid-row: 1 / span 2;
-	grid-column: 1;
-	align-self: start;
-	margin: 0;
+	margin: 3rem 0 0;
+}
+
+@include breakpoint-up(lg) {
+	.logotype-grid {
+		max-width: initial;
+		width: 832px;
+		height: 235px;
+		
+		margin: 0;
+		padding: 0;
+
+		display: grid;
+		grid-template-rows: 2fr;
+		grid-template-columns: 42% 58%;
+	}
+
+	.wellful-logotype {
+		grid-column: 1 / span 2;
+		align-self: end;
+		justify-self: right;
+	}
+
+	.logotype-memo {
+		grid-row: 1 / span 2;
+		grid-column: 1;
+		align-self: start;
+		margin: 0;
+	}
 }
 
 /* HEARTS SECTION */
 
-.hearts-grid {
-	width: 1000px;
-	height: 458px;
-	
-	display: grid;
-	grid-template-rows: 1fr;
-	grid-template-columns: repeat(20, 1fr);
+@keyframes slideRight {
+	0% {
+		transform: translate3d(0,0,0);
+	}	
+	100% {
+		transform: translate3d(65.5px,0,0);
+	}
 }
 
-.hearts-memo {
-	grid-row: 1;
-	grid-column: 3 / span 5;
-	align-self: center;
-}
-
-.hearts-animation {
-	grid-row: 1;
-	grid-column: 1 / span 3;
+@keyframes slideLeft {
+	0% {
+		transform: translate3d(0,0,0);
+	}	
+	100% {
+		transform: translate3d(-65.5px,0,0);
+	}
 }
 
  .left-heart, .right-heart {
@@ -205,20 +274,51 @@ body {
 	animation-name: slideLeft;
 }
 
-@keyframes slideRight {
-	0% {
-		transform: translate3d(0,0,0);
-	}	
-	100% {
-		transform: translate3d(65.5px,0,0);
+.hearts-grid {
+	width: 100%;
+	padding: 2rem 0 2rem;
+}
+
+.hearts-animation {
+	max-width: 700px;
+	padding: 2rem 0;
+	margin: 0 auto;
+	display: block;
+}
+
+.hearts-memo {
+	max-width: 500px;
+	padding: 0 2rem;
+	margin: 0 auto;
+}
+
+@include breakpoint-up(lg) {
+	.hearts-grid {
+		width: 1000px;
+		height: 458px;
+
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns: repeat(20, 1fr);
+	}
+
+	.hearts-memo {
+		max-width: initial;
+		grid-row: 1;
+		grid-column: 3 / span 5;
+		align-self: center;
+		padding: 0;
+		margin: 0;
+	}
+
+	.hearts-animation {
+		max-width: initial;
+		grid-row: 1;
+		grid-column: 1 / span 3;
+		padding: 0;
+		margin: 0;
 	}
 }
 
-@keyframes slideLeft {
-	0% {
-		transform: translate3d(0,0,0);
-	}	
-	100% {
-		transform: translate3d(-65.5px,0,0);
-	}
-}
+// must come last
+@import 'breakpoints';
