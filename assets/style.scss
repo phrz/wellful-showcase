@@ -33,8 +33,13 @@ body {
 	left: 0;
 
 	overflow: hidden;
-	// not a new-style shape definition. rect(top,right,bottom,left).
-	clip: rect(0, auto, auto, 0);
+
+	// CLIP WORKED EVERYWHERE EXCEPT SAFARI WHERE IT WAS GLITCHY
+	// clip: rect(0, auto, auto, 0);
+
+	// CLIP-PATH FIXES SAFARI BUT REQUIRES A PREFIX (FOR NOW)
+	-webkit-clip-path: inset(0);
+	clip-path: inset(0);
 
 	pointer-events: none;
 }
@@ -45,7 +50,7 @@ body {
 	position: fixed;
 	bottom: 20px;
 	left: 12px;
-	z-index: 0;
+	z-index: 10;
 }
 
 .block {
