@@ -154,41 +154,43 @@ body {
 
 // create the column layout of the paragraphs
 // and have them wrap around the image
-@include breakpoint-up(lg) {
-	.title-page-group {
-		width: 1024px;
-		max-width: initial;
-		padding: 0 0 80px 40px;
-	}
+@supports (shape-outside: polygon(0 0)) {
+	@include breakpoint-up(lg) {
+		.title-page-group {
+			width: 1024px;
+			max-width: initial;
+			padding: 0 0 80px 40px;
+		}
 
-	.page-title {
-		width: auto;
-		font-size: 60pt;
-		margin: 0 0 40px 0;
-		padding: 60px 0 0 0;
-	}
+		.page-title {
+			width: auto;
+			font-size: 60pt;
+			margin: 0 0 40px 0;
+			padding: 60px 0 0 0;
+		}
 
-	.title-page-memo {
-		padding: 0;
-	}
+		.title-page-memo {
+			padding: 0;
+		}
 
-	.title-page-memo p {
-		width: 350px;
-		padding: 0;
-	}
+		.title-page-memo p {
+			width: 350px;
+			padding: 0;
+		}
 
-	.title-page-memo .p1 {
-		margin: 0 0 0 80px;
-	}
+		.title-page-memo .p1 {
+			margin: 0 0 0 80px;
+		}
 
-	.title-page-memo .p2 {
-		margin: -200px 0 0 450px;
-	}
+		.title-page-memo .p2 {
+			margin: -200px 0 0 450px;
+		}
 
-	.wellful-card-glyph {
-		width: 730px;
-		float: right;
-		shape-outside: polygon(24% 3%, 0 37%, 72% 99%, 100% 99%, 90% 40%);
+		.wellful-card-glyph {
+			width: 730px;
+			float: right;
+			shape-outside: polygon(24% 3%, 0 37%, 72% 99%, 100% 99%, 90% 40%);
+		}
 	}
 }
 
@@ -208,31 +210,33 @@ body {
 	margin: 3rem 0 0;
 }
 
-@include breakpoint-up(lg) {
-	.logotype-grid {
-		max-width: initial;
-		width: 832px;
-		height: 235px;
-		
-		margin: 0;
-		padding: 0;
+@supports (display: grid) {
+	@include breakpoint-up(lg) {
+		.logotype-grid {
+			max-width: initial;
+			width: 832px;
+			height: 235px;
+			
+			margin: 0;
+			padding: 0;
 
-		display: grid;
-		grid-template-rows: 2fr;
-		grid-template-columns: 42% 58%;
-	}
+			display: grid;
+			grid-template-rows: 2fr;
+			grid-template-columns: 42% 58%;
+		}
 
-	.wellful-logotype {
-		grid-column: 1 / span 2;
-		align-self: end;
-		justify-self: right;
-	}
+		.wellful-logotype {
+			grid-column: 1 / span 2;
+			align-self: end;
+			justify-self: right;
+		}
 
-	.logotype-memo {
-		grid-row: 1 / span 2;
-		grid-column: 1;
-		align-self: start;
-		margin: 0;
+		.logotype-memo {
+			grid-row: 1 / span 2;
+			grid-column: 1;
+			align-self: start;
+			margin: 0;
+		}
 	}
 }
 
@@ -297,31 +301,33 @@ body {
 	margin: 0 auto;
 }
 
-@include breakpoint-up(lg) {
-	.hearts-grid {
-		width: 1000px;
-		height: 458px;
+@supports (display: grid) {
+	@include breakpoint-up(lg) {
+		.hearts-grid {
+			width: 1000px;
+			height: 458px;
 
-		display: grid;
-		grid-template-rows: 1fr;
-		grid-template-columns: repeat(20, 1fr);
-	}
+			display: grid;
+			grid-template-rows: 1fr;
+			grid-template-columns: repeat(20, 1fr);
+		}
 
-	.hearts-memo {
-		max-width: initial;
-		grid-row: 1;
-		grid-column: 3 / span 5;
-		align-self: center;
-		padding: 0;
-		margin: 0;
-	}
+		.hearts-memo {
+			max-width: initial;
+			grid-row: 1;
+			grid-column: 3 / span 5;
+			align-self: center;
+			padding: 0;
+			margin: 0;
+		}
 
-	.hearts-animation {
-		max-width: initial;
-		grid-row: 1 / 1;
-		grid-column: 1 / span 20;
-		padding: 0;
-		margin: 0;
+		.hearts-animation {
+			max-width: initial;
+			grid-row: 1 / 1;
+			grid-column: 1 / span 20;
+			padding: 0;
+			margin: 0;
+		}
 	}
 }
 
