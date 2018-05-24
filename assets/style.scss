@@ -318,8 +318,8 @@ body {
 
 	.hearts-animation {
 		max-width: initial;
-		grid-row: 1;
-		grid-column: 1 / span 3;
+		grid-row: 1 / 1;
+		grid-column: 1 / span 20;
 		padding: 0;
 		margin: 0;
 	}
