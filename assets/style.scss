@@ -1,7 +1,7 @@
 ---
 ---
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Rubik:900');
 
 @import 'mixins';
 
@@ -27,7 +27,6 @@ body {
 .logo-crop-container {
 	width: 100%;
 	height: 100%;
-	box-shadow: 0px 0px 10px black;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -44,15 +43,29 @@ body {
 	pointer-events: none;
 }
 
-.ph-retro-logo {
-	width: 75px;
-	height: 76px;
-	position: fixed;
-	bottom: 20px;
-	left: 12px;
+.logo-container {
 	z-index: 10;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
+.logo-container, .ph-retro-link-area {
+	position: fixed;
+	bottom: 18px;
+	left: 12px;
+}
+
+.ph-retro-logo, .ph-retro-link-area {
+	width: 75px;
+	height: 76px;
+}
+
+.ph-retro-link-area {}
+
+// on mobile, blocks are always
+// allowed to flow longer than 100vh.
 .block {
 	min-height: 100vh;
 	width: 100vw;
@@ -65,52 +78,69 @@ body {
 		min-height: 600px;
 		height: 100vh;
 	}
-}
 
-.block:last-of-type {
-	padding-bottom: 60px;
+	&:last-of-type {
+		padding-bottom: 60px;
+	}
 }
 
 .block-center-contents {
 	display: flex;
 	align-items: center;
 	flex-direction: row;
-
-	@include breakpoint-up(lg) {
-		justify-content: center;
-	}
+	justify-content: center;
 }
 
+// on desktop, blocks must explicitly
+// ask to flow past 100vh (for long blocks of text)
 .block-longform {
 	height: auto;
 	min-height: 100vh;
 }
 
+// used on the logotype page
 .light-pink {
 	background-color: #FF75AD;
 	color: #000;
+
+	.ph-retro-logo path {
+		fill: #FF0068;
+	}
 }
 
+// used on the wellful W glyph
+// (intersecting hearts) animation page
 .deep-pink {
 	background-color: #FF0068;
 	color: #fff;
+
+	.ph-retro-logo path {
+		fill: #000;
+	}
 }
 
+// used on the hearts guilloché animation page
+.powder-pink {
+	background-color: #FFF2F2;
+	color: #FF0068;
+
+	.ph-retro-logo path {
+		// fill: #FF0068;
+		fill: none;
+		stroke: #FF0068;
+		stroke-width: 1pt;
+		// opacity: 0.7;
+	}
+}
+
+// used on the title page
 .blue {
 	background-color: #3C59CF;
 	color: #fff;
-}
 
-.light-pink .ph-retro-logo path {
-	fill: #FF0068;
-}
-
-.deep-pink .ph-retro-logo path {
-	fill: #000;
-}
-
-.blue .ph-retro-logo path {
-	fill: #fff;
+	.ph-retro-logo path {
+		fill: #fff;
+	}
 }
 
 .memo {
@@ -120,26 +150,34 @@ body {
 
 /* TITLE PAGE SECTION */
 
+// margin: 0 auto is here and not in other
+// blocks because this block is only horizontally
+// centered, and must dictate the size of its container,
+// therefore cannot be flexed (i think)
 .title-page-group {
 	max-width: 700px;
 	margin: 0 auto;
 }
 
+// page title font size grows dynamically
+// to appear proportional to .wellful-card-glyph
 .page-title {
 	width: 60%;
-	font-weight: 400;
-	font-size: 10vw;
+	font-family: Rubik;
+	font-weight: 900;
+	font-size: 9vw;
 
 	margin: -2.3em 0 40px;
 	padding: 0 2rem 0;
 	
 	color: #fff;
 	line-height: 1;
-}
 
-@media screen and (min-width: 700px) {
-	.page-title {
-		font-size: 70px;
+	// stop growing the title text when the card-glyph
+	// stops growing
+	@media screen and (min-width: 700px) {
+		// 700px * 0.09 (9vw)
+		font-size: 63px;
 	}
 }
 
@@ -164,8 +202,8 @@ body {
 
 		.page-title {
 			width: auto;
-			font-size: 60pt;
-			margin: 0 0 40px 0;
+			font-size: 51pt;
+			margin: 0 0 64px 0;
 			padding: 60px 0 0 0;
 		}
 
@@ -199,7 +237,6 @@ body {
 .logotype-grid {
 	max-width: 600px;
 	padding: 2rem;
-	margin: 0 auto;
 }
 
 .wellful-logotype {
@@ -216,8 +253,7 @@ body {
 			max-width: initial;
 			width: 832px;
 			height: 235px;
-			
-			margin: 0;
+
 			padding: 0;
 
 			display: grid;
@@ -260,18 +296,35 @@ body {
 	}
 }
 
+.hearts-grid {
+	width: auto;
+	padding: 2rem 0 2rem;
+}
+
+.hearts-animation {
+	max-width: 700px;
+	padding: 2rem 0;
+	display: block;
+}
+
+.hearts-memo {
+	max-width: 500px;
+	padding: 0 2rem;
+}
+
  .left-heart, .right-heart {
 	animation-duration: 5s;
 	animation-timing-function: ease;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
+	animation-delay: 1s;
 }
 
 .heart {
 	animation-play-state: paused;
 }
 
-.block[once-onscreen="true"] .heart {
+.hearts-grid[once-onscreen="true"] .heart {
 	animation-play-state: running;
 }
  
@@ -281,24 +334,6 @@ body {
 
 .right-heart {
 	animation-name: slideLeft;
-}
-
-.hearts-grid {
-	width: 100%;
-	padding: 2rem 0 2rem;
-}
-
-.hearts-animation {
-	max-width: 700px;
-	padding: 2rem 0;
-	margin: 0 auto;
-	display: block;
-}
-
-.hearts-memo {
-	max-width: 500px;
-	padding: 0 2rem;
-	margin: 0 auto;
 }
 
 @supports (display: grid) {
@@ -331,5 +366,62 @@ body {
 	}
 }
 
+/* HEARTS UNFURLING ANIMATION - GUILLOCHÉ MOTIF */
+
+.hearts-unfurling-grid {
+	display: grid;
+	grid-template: repeat(15, 40px) / repeat(15, 40px);
+}
+
+.hearts-motif-title {
+	grid-row: 8 / span 1;
+	grid-column: 11 / span 6;
+	z-index: 2;
+	
+	color: #ff0066;
+	text-transform: uppercase;
+	font-weight: bold;
+	
+	position: relative;
+	top: 10px;
+	
+	margin: 0;
+}
+
+.hearts-motif-title span {
+	background: #FFF2F2;
+}
+
+.hearts-unfurling-animation {
+	grid-row: 1 / span 15;
+	grid-column: 1 / span 15;
+}
+
+.rotate-group {
+	transform-origin: 187.5px 187.5px;
+	animation: fan-out 6s ease 1s alternate 1;
+	animation-fill-mode: forwards;
+	opacity: 0;
+
+	animation-play-state: paused;
+}
+
+.hearts-unfurling-grid[once-onscreen="true"] .rotate-group {
+	animation-play-state: running;
+}
+
+@keyframes fan-out {
+	0% {
+		transform: rotate(0);
+		opacity: 0;
+	}
+	1%, 100% {
+		opacity: 1;
+	}
+	70%, 100% {
+		transform: rotate(calc(360deg / 21.0));
+	}
+}
+
 // must come last
-@import 'breakpoints';
+// @import 'breakpoints';

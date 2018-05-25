@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 375 375" class="hearts-unfurling-animation">
+	<defs>
+		<g id="single-heart" stroke="#FF0068" fill="none" transform="translate(-221.000000, -58.000000)">
+			<path d="M269.07783,84.6038778 C267.490832,72.2279005 257.541818,30.7855984 246.008576,90.7859279 C233.896733,30.7855984 224.52355,72.2279005 222.939321,84.6038778 C220.054626,107.488153 221.78489,142.133763 225.824016,158.835987 L246.011344,245.444074 L266.198672,158.835987 C270.232331,142.133763 271.962594,107.50003 269.077968,84.6038778 L269.07783,84.6038778 Z"></path>
+		</g>
+	</defs>
+	<g>
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		<g class="rotate-group">
+		<use xlink:href="#single-heart" x="163" y="0" />
+		</g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g>
+	</g>
+</svg>

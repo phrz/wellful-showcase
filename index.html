@@ -9,11 +9,13 @@ layout: null
 	<title>Wellful</title>
 	<link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
+<body check-bottom>
 
 	{% capture logo %}
 		<div class="logo-crop-container">
-			{%- include ph-retro.svg -%}
+			<div class="logo-container">
+				{%- include ph-retro.svg -%}
+			</div><!-- .logo-container -->
 		</div>
 	{% endcapture %}
 
@@ -52,11 +54,11 @@ layout: null
 	</section>
 
 
-	<section class="block deep-pink block-center-contents" test-onscreen>
+	<section class="block deep-pink block-center-contents">
 		
 		{{ logo }}
 		
-		<div class="hearts-grid">
+		<div class="hearts-grid" test-onscreen>
 			{%- include wellful-hearts-animation.svg -%}
 
 			<p class="memo hearts-memo">
@@ -75,6 +77,21 @@ layout: null
 		</div>
 	</section><!-- .block -->
 
+	<section class="block powder-pink block-center-contents">
+
+		{{ logo }}
+
+		<div class="hearts-unfurling-grid" test-onscreen>
+			<div class="hearts-motif-title">
+				<span>Wellful<br>
+				Strategic Plan, Years 5–9</span>
+			</div>
+			{%- include hearts-unfurling-animation.svg -%}
+		</div>
+
+	</section><!-- .block -->
+	
+	<a href="#" class="ph-retro-link-area" aria-label="Return home" title="Return home"></a>
 
 	<script src="assets/wellful-showcase.js"></script>
 </body>
